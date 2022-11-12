@@ -1,0 +1,19 @@
+[package]
+name = "async-tail"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "_async_tail"
+crate-type = ["cdylib"]
+
+[dependencies]
+linemux = "0.2.4"
+pyo3 = { version = "0.17.1", features = ["extension-module"] }
+pyo3-asyncio = { version = "0.17.0", features = ["attributes", "tokio-runtime"] }
+tokio = "1.21.2"
+
+
+[package.metadata.maturin]
+name = "async_tail._async_tail"
