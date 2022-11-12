@@ -26,7 +26,6 @@ impl Tail {
                     lines.add_file(path).await.unwrap();
                 }
                 while let Ok(Some(line)) = lines.next_line().await {
-                    println!("{:?}", line);
                     changes_clone
                         .lock()
                         .unwrap()
