@@ -38,6 +38,6 @@ asyncio.run(main())
 
 **async-tail** is a way for me to learn Rust and experiment Rust bindings from Python. It is inspired from the great [Samuel COLVIN](https://github.com/samuelcolvin)'s work on [watchfiles](https://github.com/samuelcolvin/watchfiles), which provides a Python wrapper around Rust [notify](https://crates.io/crates/notify) crate. This is still under development and needs several things to be adressed before a first release:
 
-- [ ] Write tests
+- [x] Write tests
 - [ ] Setup proper CI
 - [ ] Implement step/debounce_ms/timeout logic for async handler (AIOTail)
