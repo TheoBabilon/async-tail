@@ -4,6 +4,8 @@
 #
 #    pip-compile --output-file=requirements/testing.txt requirements/testing.in
 #
+anyio==3.6.2
+    # via -r requirements/testing.in
 attrs==22.1.0
     # via pytest
 commonmark==0.9.1
@@ -12,6 +14,8 @@ coverage==6.5.0
     # via -r requirements/testing.in
 dirty-equals==0.5.0
     # via -r requirements/testing.in
+idna==3.4
+    # via anyio
 iniconfig==1.1.1
     # via pytest
 packaging==21.3
@@ -38,5 +42,7 @@ pytz==2022.6
     # via dirty-equals
 rich==12.6.0
     # via pytest-pretty
+sniffio==1.3.0
+    # via anyio
 typing-extensions==4.4.0
     # via dirty-equals

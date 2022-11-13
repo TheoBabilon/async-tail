@@ -51,7 +51,7 @@ test:
 
 .PHONY: testcov
 testcov: test
-	@echo"building coverage html"
+	@echo "building coverage html"
 	@coverage html
 
 .PHONY: docs

@@ -1,3 +1,4 @@
+anyio
 coverage
 dirty-equals
 pytest
