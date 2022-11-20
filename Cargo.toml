@@ -1,7 +1,26 @@
 [package]
 name = "async-tail"
-version = "0.1.0"
+version = "0.0.0"
 edition = "2021"
+license = "MIT"
+homepage = "https://github.com/TheoBabilon/async-tail"
+repository = "https://github.com/TheoBabilon/async-tail.git"
+readme = "README.md"
+include = [
+    "/pyproject.toml",
+    "/README.md",
+    "/LICENSE",
+    "/Makefile",
+    "/src",
+    "/async_tail",
+    "/tests",
+    "/requirements",
+    "/.cargo",
+    "!__pycache__",
+    "!tests/.mypy_cache",
+    "!tests/.pytest_cache",
+    "!*.so",
+]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [lib]
