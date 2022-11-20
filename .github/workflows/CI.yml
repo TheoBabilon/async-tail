@@ -1,0 +1,110 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - '**'
+  pull_request: {}
+
+jobs:
+  test:
+    name: test ${{ matrix.python-version }}, rust ${{ matrix.rust-version }} on ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu, macos, windows]
+        rust-version: [stable, '1.65.0']
+        python-version:
+          - '3.7'
+          - '3.8'
+          - '3.9'
+          - '3.10'
+          - '3.11'
+          - 'pypy3.8'
+          - 'pypy3.9'
+        exclude:
+          - rust-version: '1.65.0'
+            os: macos
+          - rust-version: '1.65.0'
+            os: windows
+
+    runs-on: ${{ matrix.os }}-latest
+
+    env:
+      PYTHON: ${{ matrix.python-version }}
+      RUST: ${{ matrix.rust-version }}
+      OS: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: set up python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: install rust
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: ${{ matrix.rust-version }}
+        override: true
+
+    - name: cache rust
+      uses: Swatinem/rust-cache@v1
+
+    - run: pip install -r requirements/pyproject.txt -r requirements/testing.txt
+
+    - run: pip install -e .
+    - run: pip freeze
+
+    - run: make test
+
+    - run: coverage xml
+
+    - uses: codecov/codecov-action@v1.0.13
+      with:
+        file: ./coverage.xml
+        env_vars: PYTHON,RUST,OS
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: install rust
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: stable
+        override: true
+        components: rustfmt, clippy
+
+    - name: cache rust
+      uses: Swatinem/rust-cache@v1
+
+    - run: pip install -r requirements/pyproject.txt -r requirements/linting.txt
+
+    - run: pip install -e .
+
+    - uses: pre-commit/action@v3.0.0
+      with:
+        extra_args: --all-files
+
+  # Used for branch protection checks, see https://github.com/marketplace/actions/alls-green#why
+  check:
+    if: always()
+    needs: [test, lint, docs]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}
