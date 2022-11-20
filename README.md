@@ -1,5 +1,7 @@
 # async-tail
 
+[![CI](https://github.com/TheoBabilon/async-tail/workflows/CI/badge.svg?event=push)](https://github.com/TheoBabilon/async-tail/actions?query=event%3Apush+branch%3Amain+workflow%3ACI)
+
 Asynchronous tailing library written in Rust.
 
 ---
