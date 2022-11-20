@@ -43,6 +43,10 @@ Homepage = 'https://github.com/theobabilon/async-tail'
 Funding = 'https://github.com/sponsors/theobabilon'
 Source = 'https://github.com/theobabilon/async-tail'
 
+[tool.maturin]
+bindings = 'pyo3'
+sdist-include = ['Cargo.lock']
+
 [tool.pytest.ini_options]
 testpaths = 'tests'
 log_format = '%(name)s %(levelname)s: %(message)s'
