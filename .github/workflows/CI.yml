@@ -151,7 +151,7 @@ jobs:
         if: "startsWith(github.ref, 'refs/tags/')"
 
       - name: Sync Cargo.lock
-        run: cargo update -p watchfiles_rust_notify
+        run: cargo update -p async-tail
         if: "startsWith(github.ref, 'refs/tags/')"
 
       - name: build sdist
