@@ -3,6 +3,7 @@
 [![CI](https://github.com/TheoBabilon/async-tail/workflows/ci/badge.svg?event=push)](https://github.com/TheoBabilon/async-tail/actions?query=event%3Apush+branch%3Amain+workflow%3Aci)
 [![Coverage](https://codecov.io/gh/TheoBabilon/async-tail/branch/main/graph/badge.svg)](https://codecov.io/gh/TheoBabilon/async-tail)
 [![pypi](https://img.shields.io/pypi/v/async-tail.svg)](https://pypi.python.org/pypi/async-tail)
+[![license](https://img.shields.io/github/license/TheoBabilon/async-tail.svg)](https://github.com/TheoBabilon/async-tail/blob/main/LICENSE)
 
 Asynchronous tailing library written in Rust.
 
