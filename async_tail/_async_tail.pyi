@@ -1,6 +1,6 @@
 from typing import Any, Awaitable, List, Literal, Tuple, Union
 
-__all__ = ("AIOTail", "Tail")
+__all__ = ('AIOTail', 'Tail')
 
 __version__: str
 """The package version as defined in `Cargo.toml`, modified to match python's versioning semantics."""
