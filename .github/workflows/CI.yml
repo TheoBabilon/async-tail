@@ -101,7 +101,7 @@ jobs:
   # Used for branch protection checks, see https://github.com/marketplace/actions/alls-green#why
   check:
     if: always()
-    needs: [test, lint, docs]
+    needs: [test, lint]
     runs-on: ubuntu-latest
     steps:
       - name: Decide whether the needed jobs succeeded or failed
