@@ -34,7 +34,7 @@ impl AIOTail {
         pyo3_asyncio::tokio::future_into_py(py, async move {
             let line = inner.lock().await.lines.next_line().await?;
             match line {
-                Some(val) => Ok((val.line().to_string(), val.source().display().to_string())),
+                Some(val) => Ok((val.line().to_owned(), val.source().to_owned())),
                 None => Err(PyException::new_err("An error occured while reading line")),
             }
         })
