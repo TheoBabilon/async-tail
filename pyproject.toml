@@ -1,5 +1,5 @@
 [build-system]
-requires = ["maturin>=0.14,<0.15"]
+requires = ["maturin>=1.1.0,<1.1.1"]
 build-backend = "maturin"
 
 [project]
@@ -44,6 +44,7 @@ Funding = 'https://github.com/sponsors/theobabilon'
 Source = 'https://github.com/theobabilon/async-tail'
 
 [tool.maturin]
+module-name = "async_tail._async_tail"
 bindings = 'pyo3'
 sdist-include = ['Cargo.lock']
 
