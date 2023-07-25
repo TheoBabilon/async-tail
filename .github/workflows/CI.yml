@@ -134,6 +134,9 @@ jobs:
             platform: linux
             target: aarch64
             manylinux: musllinux_1_1
+          - os: ubuntu
+            platform: linux
+            target: aarch64
             container: messense/manylinux_2_24-cross:aarch64
 
     runs-on: ${{ matrix.os }}-latest
